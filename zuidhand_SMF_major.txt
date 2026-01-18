@@ -1,0 +1,54 @@
+# SMF hoge kleur: minstens 5 kaart hoog, geen verdeelde hand, 20 hcp
+(
+  (
+    hcp(south) + spades(south) - 6 == 20
+    &&
+    shape(
+      south, 
+      5xxx + 6xxx + 7xxx + 8xxx + 9xxx 
+      - any 5431 - any 5422 - any 5332
+    )
+    &&
+    (
+      hcp(south,spades) + spades(south) - 6 >= 9
+      ||
+      (
+        hcp(south,spades) >= 7
+        &&
+        hascard(south, TS)
+        &&
+        (
+          hascard(south, JS)
+          ||
+          hascard(south, QS)
+        )
+      )
+    )
+  )
+  ||
+  (
+    hcp(south) + hearts(south) - 6 == 20
+    &&
+    shape(
+      south, 
+      x5xx + x6xx + x7xx + x8xx + x9xx 
+      - any 5431 - any 5422 - any 5332
+    )
+    &&
+    (
+      hcp(south,hearts) + hearts(south) - 6 >= 9
+      ||
+      (
+        hcp(south,hearts) >= 7
+        &&
+        hascard(south, TH)
+        &&
+        (
+          hascard(south, JH)
+          ||
+          hascard(south, QH)
+        )
+      )
+    )
+  )
+)

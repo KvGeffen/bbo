@@ -1,0 +1,80 @@
+# MF lager kleur: geen singleton heer, minstens 5 kaart laag, geen verdeelde hand, >20 hcp
+(
+  (
+    spades(south) != 1
+    ||
+    hcp(south, spades) != 3
+  )
+  &&
+  (
+    hearts(south) != 1
+    ||
+    hcp(south, hearts) != 3
+  )
+  &&
+  (
+    diamonds(south) != 1
+    ||
+    hcp(south, diamonds) != 3
+  )
+  &&
+  (
+    clubs(south) != 1
+    ||
+    hcp(south, clubs) != 3
+  )
+  &&
+  (
+    (
+      hcp(south) + diamonds(south) - 6 >= 20
+      &&
+      shape(
+        south, 
+        xx5x + xx6x + xx7x + xx8x + xx9x 
+        - any 5431 - any 5422 - any 5332
+      )
+      &&
+      (
+        hcp(south,diamonds) + diamonds(south) - 6 >= 9
+        ||
+        (
+          hcp(south,diamonds) >= 7
+          &&
+          hascard(south, TD)
+          &&
+          (
+            hascard(south, JD)
+            ||
+            hascard(south, QD)
+          )
+        )
+      )
+    )
+    ||
+    (
+      hcp(south) + clubs(south) - 6 >= 20
+      &&
+      shape(
+        south, 
+        xxx5 + xxx6 + xxx7 + xxx8 + xxx9 
+        - any 5431 - any 5422 - any 5332
+      )
+      &&
+      (
+        hcp(south,clubs) + clubs(south) - 6 >= 9
+        ||
+        (
+          hcp(south,clubs) >= 7
+          &&
+          hascard(south, TC)
+          &&
+          (
+            hascard(south, JC)
+            ||
+            hascard(south, QC)
+          )
+        )
+      )
+    )
+  )
+)

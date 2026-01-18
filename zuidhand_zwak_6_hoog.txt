@@ -1,0 +1,34 @@
+# Zuid hand, zwak, 6 hoog, geen regel van 20
+(
+  hcp(south) >= 6
+  &&
+  hcp(south) <= 10
+  && 
+  (
+    hcp(south) + hearts(south) + spades(south) < 20
+    &&
+    hcp(south) + hearts(south) + diamonds(south) < 20
+    &&
+    hcp(south) + hearts(south) + clubs(south) < 20
+    &&
+    hcp(south) + spades(south) + hearts(south) < 20
+    &&
+    hcp(south) + spades(south) + diamonds(south) < 20
+    &&
+    hcp(south) + spades(south) + clubs(south) < 20
+  )
+  &&
+  (
+    (
+      hearts(south) == 6
+      &&
+      spades(south) <= 3
+    )
+    ||
+    (
+      hearts(south) <= 3
+      &&
+      spades(south) == 6
+    )
+  )
+)

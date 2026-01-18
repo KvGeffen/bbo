@@ -1,0 +1,221 @@
+# SMF hoge kleur: 
+# minstens 5 kaart hoog, geen verdeelde hand, 
+# 20 fp met singleton vrouw
+# 21 fp met singleton heer of singleton/vrouw
+(
+  (
+    (
+      (
+        hcp(south) + spades(south) - 5  == 20
+        ||
+        hcp(south) + hearts(south) - 5  == 20
+      )
+      &&
+      (
+        (
+          spades(south) == 1
+          &&
+          hcp(south, spades) == 2
+        )
+        ||
+        (
+          hearts(south) == 1
+          &&
+          hcp(south, hearts) == 2
+        )
+        ||
+        (
+          diamonds(south) == 1
+          &&
+          hcp(south, diamonds) == 2
+        )
+        ||
+        (
+          clubs(south) == 1
+          &&
+          hcp(south, clubs) == 2
+        )
+      )
+    )
+    ||
+    (
+      (
+        hcp(south) + spades(south) - 5  == 21
+        ||
+        hcp(south) + hearts(south) - 5  == 21
+      )
+      &&
+      (
+        (
+          spades(south) == 1
+          &&
+          hcp(south, spades) == 3
+        )
+        ||
+        (
+          hearts(south) == 1
+          &&
+          hcp(south, hearts) == 3
+        )
+        ||
+        (
+          diamonds(south) == 1
+          &&
+          hcp(south, diamonds) == 3
+        )
+        ||
+        (
+          clubs(south) == 1
+          &&
+          hcp(south, clubs) == 3
+        )
+      )
+    )
+  )
+  &&
+  (
+    (
+      (
+        hcp(south) + spades(south) - 5  == 20
+        ||
+        hcp(south) + spades(south) - 5  == 21
+      )
+      &&
+      shape(
+        south, 
+        5xxx + 6xxx + 7xxx + 8xxx + 9xxx 
+        - any 5431 - any 5422 - any 5332
+      )
+      &&
+      (
+        hcp(south,spades) + spades(south) - 6 >= 9
+        ||
+        (
+          hcp(south,spades) >= 7
+          &&
+          hascard(south, TS)
+          &&
+          (
+            hascard(south, JS)
+            ||
+            hascard(south, QS)
+          )
+        )
+      )
+    )
+    ||
+    (
+      (
+        hcp(south) + hearts(south) - 5  == 20
+        ||
+        hcp(south) + hearts(south) - 5  == 21
+      )
+      &&
+      shape(
+        south, 
+        x5xx + x6xx + x7xx + x8xx + x9xx 
+        - any 6421 - any 5431 - any 5422 - any 5332
+      )
+      &&
+      (
+        hcp(south,hearts) + hearts(south) - 6 >= 9
+        ||
+        (
+          hcp(south,hearts) >= 7
+          &&
+          hascard(south, TH)
+          &&
+          (
+            hascard(south, JH)
+            ||
+            hascard(south, QH)
+          )
+        )
+      )
+    )
+  )
+)
+||
+# MF hoge kleur: geen singleton heer, minstens 5 kaart hoog, geen verdeelde hand, >20 hcp
+(
+  (
+    spades(south) != 1
+    ||
+    hcp(south, spades) != 3
+  )
+  &&
+  (
+    hearts(south) != 1
+    ||
+    hcp(south, hearts) != 3
+  )
+  &&
+  (
+    diamonds(south) != 1
+    ||
+    hcp(south, diamonds) != 3
+  )
+  &&
+  (
+    clubs(south) != 1
+    ||
+    hcp(south, clubs) != 3
+  )
+  &&
+  (
+    (
+      hcp(south) + spades(south) - 6 == 20
+      &&
+      shape(
+        south, 
+        5xxx + 6xxx + 7xxx + 8xxx + 9xxx 
+        - any 5431 - any 5422 - any 5332
+      )
+      &&
+      (
+        hcp(south,spades) + spades(south) - 6 >= 9
+        ||
+        (
+          hcp(south,spades) >= 7
+          &&
+          hascard(south, TS)
+          &&
+          (
+            hascard(south, JS)
+            ||
+            hascard(south, QS)
+          )
+        )
+      )
+    )
+    ||
+    (
+      hcp(south) + hearts(south) - 6 == 20
+      &&
+      shape(
+        south, 
+        x5xx + x6xx + x7xx + x8xx + x9xx 
+        - any 5431 - any 5422 - any 5332
+      )
+      &&
+      (
+        hcp(south,hearts) + hearts(south) - 6 >= 9
+        ||
+        (
+          hcp(south,hearts) >= 7
+          &&
+          hascard(south, TH)
+          &&
+          (
+            hascard(south, JH)
+            ||
+            hascard(south, QH)
+          )
+        )
+      )
+    )
+  )
+)
+
+
+
